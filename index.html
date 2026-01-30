@@ -275,7 +275,37 @@
 </script>
 
 </body>
+    <a href="tel:+48123456789" class="float-btn">
+    📞
+</a>
+
+<style>
+    .float-btn {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366; /* Kolor zielony */
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .float-btn:hover {
+        background-color: #1ebe57;
+        transform: scale(1.1);
+    }
+</style>
 </html>
+
 
 
 
