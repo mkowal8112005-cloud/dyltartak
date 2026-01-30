@@ -3,238 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DylTartak | Najwyższa Jakość Drewna</title>
+    <title>DylTartak | Drewno Konstrukcyjne i Wykończeniowe</title>
     <style>
         :root {
-            --primary: #3d2b1f; /* Głęboki brąz */
-            --accent: #d4a373;  /* Drewniany beż */
+            --primary: #3d2b1f; 
+            --accent: #d4a373;  
             --text-main: #2c3e50;
             --bg-light: #fdfcfb;
             --white: #ffffff;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s ease;
         }
 
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0; 
-            background: var(--bg-light); 
-            color: var(--text-main);
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Inter', -apple-system, sans-serif; 
+            margin: 0; background: var(--bg-light); color: var(--text-main);
+            scroll-behavior: smooth;
         }
 
-        /* Nagłówek */
-        header { 
-            background: var(--white);
-            padding: 100px 20px; 
-            text-align: center; 
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+        /* Nawigacja */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; box-sizing: border-box;
         }
+        nav .logo { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        nav .menu a { text-decoration: none; color: var(--primary); margin-left: 30px; font-size: 0.9rem; font-weight: 600; }
 
-        #admin-trigger { 
-            cursor: pointer; 
-            font-size: 3rem; 
-            margin: 0; 
-            font-weight: 800; 
-            letter-spacing: -1px;
-            color: var(--primary);
-            text-transform: uppercase;
+        /* Hero Section */
+        .hero { 
+            height: 80vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; padding: 20px;
         }
+        .hero h1 { font-size: 4rem; margin: 0; text-transform: uppercase; letter-spacing: 4px; }
+        .hero p { font-size: 1.2rem; letter-spacing: 2px; margin: 20px 0; opacity: 0.9; }
+        .hero .btn-main { background: var(--accent); color: white; text-decoration: none; padding: 15px 40px; border-radius: 5px; font-weight: bold; margin-top: 20px; }
 
-        header p {
-            color: var(--accent);
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-top: 10px;
+        /* Zalety (Dlaczego My) */
+        .features { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; padding: 80px 50px; text-align: center; background: white;
         }
+        .feature-box i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; display: block; }
+        .feature-box h3 { margin-bottom: 10px; color: var(--primary); }
 
-        /* Kontener */
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-
-        h2 { 
-            text-align: center; 
-            font-size: 2rem; 
-            margin-bottom: 50px; 
-            font-weight: 700;
-            position: relative;
-        }
-
-        h2::after {
-            content: "";
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            margin: 15px auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--primary); }
 
         /* Siatka ofert */
-        .offer-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 40px; 
-        }
-        
+        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .offer-item { 
-            background: var(--white);
-            padding: 40px; 
-            border-radius: 15px; 
-            text-align: center; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: var(--transition);
+            background: white; border-radius: 12px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition);
         }
+        .offer-item:hover { transform: translateY(-5px); }
+        .offer-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
+        .offer-content { padding: 25px; text-align: center; }
+        .prod-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .price-tag { font-size: 1.1rem; color: var(--accent); font-weight: 700; }
 
-        .offer-item:hover { 
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        /* Kontakt i Mapa */
+        .contact-wrapper { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; 
+            background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
+        .map-container iframe { width: 100%; height: 300px; border: 0; border-radius: 10px; }
+
+        /* Admin UI */
+        .admin-fields { display: none; background: #fef9e7; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px dashed #f1c40f; }
+        .admin-fields input, .admin-fields select { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px; }
+        .save-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .btn-save { background: var(--accent); border: none; color: white; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-left: 15px; }
+
+        footer { background: var(--primary); color: white; padding: 40px; text-align: center; margin-top: 80px; }
         
-        .prod-name { 
-            font-size: 1.4rem; 
-            margin-bottom: 15px; 
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .price-tag { 
-            font-size: 1.2rem; 
-            color: var(--text-main);
-            font-weight: 400;
-        }
-
-        .price-tag strong {
-            color: var(--accent);
-            font-size: 1.8rem;
-        }
-
-        /* Panel Admina UI */
-        .admin-fields { 
-            display: none; 
-            background: #f8f9fa; 
-            padding: 20px; 
-            margin-top: 25px; 
-            border-radius: 10px; 
-            border: 1px dashed #ced4da;
-            text-align: left;
-        }
-
-        .admin-fields label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #6c757d; }
-        .admin-fields input, .admin-fields select { 
-            width: 100%; margin: 8px 0 15px 0; padding: 12px; 
-            border-radius: 6px; border: 1px solid #dee2e6; font-size: 1rem;
-        }
-        
-        /* Przyciski */
-        .btn { border: none; padding: 14px 28px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: var(--transition); }
-        .btn-save { background: var(--primary); color: var(--white); }
-        .btn-save:hover { background: #000; }
-        .btn-add { background: var(--accent); color: var(--white); margin-bottom: 40px; }
-        .btn-delete { background: #ffeded; color: #e74c3c; width: 100%; margin-top: 10px; }
-        .btn-delete:hover { background: #e74c3c; color: #fff; }
-
-        .save-bar { 
-            display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: var(--primary); color: white; padding: 15px 30px; border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 10000;
-        }
-
-        /* Kontakt */
-        .contact-section { 
-            margin-top: 100px; padding: 80px 40px; 
-            background: var(--white); border-radius: 20px;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        }
-
-        .contact-box h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 20px; }
-        .contact-box p { font-size: 1.2rem; margin: 5px 0; font-weight: 500; }
-
-        .admin-only { display: none; text-align: center; }
-
         @media (max-width: 768px) {
-            .contact-section { grid-template-columns: 1fr; padding: 40px 20px; }
-            #admin-trigger { font-size: 2rem; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            nav { padding: 15px 20px; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1 id="admin-trigger">DylTartak</h1>
-    <p>Tanio szybko i solidnie.</p>
-</header>
-
-<div class="container">
-    <div class="admin-only" id="admin-tools">
-        <button class="btn btn-add" onclick="addNewOffer()">+ Dodaj Nową Pozycję</button>
+<nav>
+    <div class="logo" id="admin-trigger">DylTartak</div>
+    <div class="menu">
+        <a href="#">O nas</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#kontakt">Kontakt</a>
     </div>
+</nav>
 
+<section class="hero">
+    <h1>DylTartak</h1>
+    <p>NAJWYŻSZA JAKOŚĆ DREWNA PROSTO Z LASU</p>
+    <a href="#oferta" class="btn-main">Sprawdź ofertę</a>
+</section>
+
+<section class="features">
+    <div class="feature-box">
+        <i>🌲</i>
+        <h3>Naturalne Surowce</h3>
+        <p>Drewno pozyskiwane z certyfikowanych lasów państwowych.</p>
+    </div>
+    <div class="feature-box">
+        <i>🚚</i>
+        <h3>Własny Transport</h3>
+        <p>Dostarczamy zamówienia bezpośrednio na plac Twojej budowy.</p>
+    </div>
+    <div class="feature-box">
+        <i>⚡</i>
+        <h3>Szybkie Terminy</h3>
+        <p>Realizacja typowych zleceń nawet w 48 godzin.</p>
+    </div>
+</section>
+
+<div class="container" id="oferta">
+    <h2>Nasza Oferta</h2>
+    <div style="text-align: center; display:none;" id="admin-tools">
+        <button onclick="addNewOffer()" style="margin-bottom:30px; padding:10px 20px; cursor:pointer;">+ Dodaj produkt</button>
+    </div>
     <div class="offer-grid" id="offer-grid"></div>
+</div>
 
-    <div class="contact-section">
-        <div class="contact-box">
-            <h3>Lokalizacja</h3>
-            <p id="display-address">ul. Tartaczna 15, 30-001 Tartakowo</p>
-            <div class="admin-fields">
-                <label>Pełny adres</label>
-                <input type="text" id="edit-address" value="ul. Tartaczna 15, 30-001 Tartakowo">
+<div class="container" id="kontakt">
+    <h2>Kontakt i Lokalizacja</h2>
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h3 style="color:var(--accent)">Biuro Obsługi</h3>
+            <p><strong>Adres:</strong> <span id="display-address">ul. Tartaczna 15, 30-001 Tartakowo</span></p>
+            <p><strong>Telefon:</strong> <span id="display-phone">+48 123 456 789</span></p>
+            <p><strong>E-mail:</strong> <span id="display-email">biuro@dyltartak.pl</span></p>
+            
+            <div class="admin-fields" id="admin-contact">
+                <input type="text" id="edit-address" placeholder="Adres">
+                <input type="text" id="edit-phone" placeholder="Telefon">
+                <input type="text" id="edit-email" placeholder="Email">
             </div>
         </div>
-        <div class="contact-box">
-            <h3>Skontaktuj się</h3>
-            <p>Tel: <span id="display-phone">+48 123 456 789</span></p>
-            <p>E-mail: <span id="display-email">biuro@dyltartak.pl</span></p>
-            <div class="admin-fields">
-                <label>Numer telefonu</label>
-                <input type="text" id="edit-phone" value="+48 123 456 789">
-                <label>Adres e-mail</label>
-                <input type="text" id="edit-email" value="biuro@dyltartak.pl">
-            </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.428453416!2d19.9448!3d50.0647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDAzJzUyLjkiTiAxOcKwNTYnNDEuMyJF!5e0!3m2!1spl!2spl!4v1620000000000!5m2!1spl!2spl"></iframe>
         </div>
     </div>
 </div>
 
+<footer>
+    <p>&copy; 2026 DylTartak. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
 <div class="save-bar" id="save-bar">
-    <span style="margin-right:20px; font-weight:500;">Tryb projektowania aktywny</span>
-    <button class="btn btn-save" onclick="saveData()">Zapisz Zmiany</button>
+    Tryb Edycji Aktywny 
+    <button class="btn-save" onclick="saveData()">Zapisz Zmiany</button>
 </div>
 
 <script>
     window.onload = function() { loadSavedData(); };
 
+    // Logowanie (kliknięcie w LOGO w nawigacji)
     document.getElementById('admin-trigger').addEventListener('click', function() {
-        const u = prompt("Login:");
-        const p = prompt("Hasło:");
-        if(u === 'admin' && p === 'admin') {
+        if(prompt("Login:") === 'admin' && prompt("Hasło:") === 'admin') {
             document.querySelectorAll('.admin-fields').forEach(f => f.style.display = 'block');
             document.getElementById('save-bar').style.display = 'flex';
-            document.getElementById('save-bar').style.alignItems = 'center';
             document.getElementById('admin-tools').style.display = 'block';
         }
     });
 
-    function addNewOffer(name = "Nowy Produkt", price = "0", unit = "m³") {
+    function addNewOffer(name = "Nowy Produkt", price = "0", unit = "m³", img = "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=500&auto=format&fit=crop") {
         const grid = document.getElementById('offer-grid');
         const newItem = document.createElement('div');
         newItem.className = 'offer-item';
         newItem.innerHTML = `
-            <h3 class="prod-name">${name}</h3>
-            <p class="price-tag"><strong>${price}</strong> zł / ${unit}</p>
-            <div class="admin-fields" style="display:block;">
-                <label>Nazwa</label>
-                <input type="text" class="edit-n" value="${name}">
-                <label>Cena (sama liczba)</label>
-                <input type="text" class="edit-p" value="${price}">
-                <label>Jednostka</label>
-                <select class="edit-u">
-                    <option value="mb" ${unit === 'mb' ? 'selected' : ''}>mb</option>
-                    <option value="m²" ${unit === 'm²' ? 'selected' : ''}>m²</option>
-                    <option value="m³" ${unit === 'm³' ? 'selected' : ''}>m³</option>
-                    <option value="szt" ${unit === 'szt' ? 'selected' : ''}>szt</option>
-                </select>
-                <button class="btn btn-delete" onclick="this.parentElement.parentElement.remove()">Usuń z oferty</button>
+            <img src="${img}" class="offer-img">
+            <div class="offer-content">
+                <div class="prod-name">${name}</div>
+                <div class="price-tag">${price} zł / ${unit}</div>
+                <div class="admin-fields" style="display:block;">
+                    <input type="text" class="edit-n" value="${name}">
+                    <input type="text" class="edit-p" value="${price}">
+                    <select class="edit-u">
+                        <option value="mb" ${unit==='mb'?'selected':''}>mb</option>
+                        <option value="m²" ${unit==='m²'?'selected':''}>m²</option>
+                        <option value="m³" ${unit==='m³'?'selected':''}>m³</option>
+                    </select>
+                    <input type="text" class="edit-i" value="${img}" placeholder="Link do zdjęcia">
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()" style="color:red; margin-top:10px; cursor:pointer;">Usuń produkt</button>
+                </div>
             </div>
         `;
         grid.appendChild(newItem);
@@ -246,7 +203,8 @@
             offers.push({
                 name: item.querySelector('.edit-n').value,
                 price: item.querySelector('.edit-p').value,
-                unit: item.querySelector('.edit-u').value
+                unit: item.querySelector('.edit-u').value,
+                img: item.querySelector('.edit-i').value
             });
         });
 
@@ -256,16 +214,15 @@
             email: document.getElementById('edit-email').value
         };
 
-        localStorage.setItem('dylTartak_Professional', JSON.stringify({offers, contact}));
-        alert("Wszystkie dane zostały zaktualizowane pomyślnie.");
+        localStorage.setItem('dylTartak_v3', JSON.stringify({offers, contact}));
+        alert("Zapisano! Strona zostanie odświeżona.");
         location.reload();
     }
 
     function loadSavedData() {
-        const data = JSON.parse(localStorage.getItem('dylTartak_Professional'));
-
+        const data = JSON.parse(localStorage.getItem('dylTartak_v3'));
         if (data && data.offers.length > 0) {
-            data.offers.forEach(o => addNewOffer(o.name, o.price, o.unit));
+            data.offers.forEach(o => addNewOffer(o.name, o.price, o.unit, o.img));
             document.getElementById('display-address').innerText = data.contact.address;
             document.getElementById('edit-address').value = data.contact.address;
             document.getElementById('display-phone').innerText = data.contact.phone;
@@ -274,13 +231,11 @@
             document.getElementById('edit-email').value = data.contact.email;
         } else {
             addNewOffer("Więźba dachowa", "1650", "m³");
-            addNewOffer("Deska elewacyjna", "98", "m²");
-            addNewOffer("Łaty impregnowane", "4.80", "mb");
+            addNewOffer("Deska tarasowa", "110", "m²");
         }
         document.querySelectorAll('.admin-fields').forEach(f => f.style.display = 'none');
     }
 </script>
 
 </body>
-
 </html>
