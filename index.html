@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DylTartak | Drewno Konstrukcyjne i Wykończeniowe</title>
+    <title>DylTartak | Najwyższa Jakość Drewna</title>
     <style>
         :root {
-            --primary: #3d2b1f; 
+            --primary: #2d3436; 
             --accent: #d4a373;  
-            --text-main: #2c3e50;
-            --bg-light: #fdfcfb;
+            --text-main: #2d3436;
+            --bg-light: #f9f9f9;
             --white: #ffffff;
             --transition: all 0.3s ease;
         }
@@ -18,78 +18,79 @@
             font-family: 'Inter', -apple-system, sans-serif; 
             margin: 0; background: var(--bg-light); color: var(--text-main);
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
         /* Nawigacja */
         nav {
             position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.1);
             display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; box-sizing: border-box;
         }
-        nav .logo { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-        nav .menu a { text-decoration: none; color: var(--primary); margin-left: 30px; font-size: 0.9rem; font-weight: 600; }
+        nav .logo { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; color: var(--primary); }
+        nav .menu a { text-decoration: none; color: var(--primary); margin-left: 30px; font-size: 0.9rem; font-weight: 600; transition: var(--transition); }
+        nav .menu a:hover { color: var(--accent); }
 
-        /* Hero Section - Realistyczny las z drona */
-.hero { 
-    height: 80vh; 
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2041&auto=format&fit=crop'); 
-    background-size: cover; 
-    background-position: center;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    color: white; 
-    text-align: center; 
-    padding: 20px;
-}
-        .hero h1 { font-size: 4rem; margin: 0; text-transform: uppercase; letter-spacing: 4px; }
-        .hero p { font-size: 1.2rem; letter-spacing: 2px; margin: 20px 0; opacity: 0.9; }
-        .hero .btn-main { background: var(--accent); color: white; text-decoration: none; padding: 15px 40px; border-radius: 5px; font-weight: bold; margin-top: 20px; }
-
-        /* Zalety (Dlaczego My) */
-        .features { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 30px; padding: 80px 50px; text-align: center; background: white;
+        /* Hero Section */
+        .hero { 
+            height: 85vh; 
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), 
+                        url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2041&auto=format&fit=crop'); 
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; padding: 20px;
         }
-        .feature-box i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; display: block; }
-        .feature-box h3 { margin-bottom: 10px; color: var(--primary); }
+        .hero h1 { font-size: clamp(3rem, 8vw, 5rem); margin: 0; text-transform: uppercase; letter-spacing: 6px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.2rem; letter-spacing: 3px; margin: 20px 0; opacity: 0.9; text-transform: uppercase; }
+        .hero .btn-main { 
+            background: var(--accent); color: white; text-decoration: none; padding: 18px 45px; 
+            border-radius: 5px; font-weight: bold; margin-top: 25px; transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Zalety */
+        .features { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 40px; padding: 100px 50px; text-align: center; background: white;
+        }
+        .feature-box i { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .feature-box h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 15px; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--primary); }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 60px; color: var(--primary); position: relative; }
+        h2::after { content: ''; width: 60px; height: 4px; background: var(--accent); position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); }
 
-        /* Siatka ofert */
-        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        /* Oferta (Bez Zdjęć) */
+        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .offer-item { 
-            background: white; border-radius: 12px; overflow: hidden; 
+            background: white; border-radius: 12px; 
+            padding: 40px 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.03);
         }
-        .offer-item:hover { transform: translateY(-5px); }
-        .offer-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
-        .offer-content { padding: 25px; text-align: center; }
-        .prod-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
-        .price-tag { font-size: 1.1rem; color: var(--accent); font-weight: 700; }
+        .offer-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .prod-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; color: var(--primary); }
+        .price-tag { font-size: 1.3rem; color: var(--accent); font-weight: 800; }
 
-        /* Kontakt i Mapa */
+        /* Kontakt */
         .contact-wrapper { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; 
-            background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; 
+            background: white; padding: 50px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);
         }
-        .map-container iframe { width: 100%; height: 300px; border: 0; border-radius: 10px; }
+        .map-container iframe { width: 100%; min-height: 350px; border: 0; border-radius: 15px; }
 
-        /* Admin UI */
-        .admin-fields { display: none; background: #fef9e7; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px dashed #f1c40f; }
-        .admin-fields input, .admin-fields select { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px; }
-        .save-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .btn-save { background: var(--accent); border: none; color: white; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-left: 15px; }
+        /* System Edycji */
+        .admin-fields { display: none; background: #fffbe6; padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px dashed #f1c40f; }
+        .admin-fields input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        .save-bar { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #2d3436; color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); align-items: center; }
+        .btn-save { background: #27ae60; border: none; color: white; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-left: 15px; }
 
-        footer { background: var(--primary); color: white; padding: 40px; text-align: center; margin-top: 80px; }
+        footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 50px; text-align: center; margin-top: 50px; }
         
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .contact-wrapper { grid-template-columns: 1fr; }
-            nav { padding: 15px 20px; }
-            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 15px 25px; }
         }
     </style>
 </head>
@@ -98,7 +99,7 @@
 <nav>
     <div class="logo" id="admin-trigger">DylTartak</div>
     <div class="menu">
-        <a href="#">O nas</a>
+        <a href="#zalety">Dlaczego My</a>
         <a href="#oferta">Oferta</a>
         <a href="#kontakt">Kontakt</a>
     </div>
@@ -106,44 +107,44 @@
 
 <section class="hero">
     <h1>DylTartak</h1>
-    <p>NAJWYŻSZA JAKOŚĆ DREWNA PROSTO Z LASU</p>
-    <a href="#oferta" class="btn-main">Sprawdź ofertę</a>
+    <p>Solidne drewno dla Twojego domu</p>
+    <a href="#oferta" class="btn-main">Zobacz produkty</a>
 </section>
 
-<section class="features">
+<section class="features" id="zalety">
     <div class="feature-box">
         <i>🌲</i>
-        <h3>Naturalne Surowce</h3>
-        <p>Drewno pozyskiwane z certyfikowanych lasów państwowych.</p>
+        <h3>Najlepszy Surowiec</h3>
+        <p>Wyselekcjonowane drewno z certyfikowanych lasów.</p>
     </div>
     <div class="feature-box">
-        <i>🚚</i>
+        <i>📐</i>
+        <h3>Precyzyjne Cięcie</h3>
+        <p>Nowoczesne maszyny i gwarancja wymiarów.</p>
+    </div>
+    <div class="feature-box">
+        <i>🚛</i>
         <h3>Własny Transport</h3>
-        <p>Dostarczamy zamówienia bezpośrednio na plac Twojej budowy.</p>
-    </div>
-    <div class="feature-box">
-        <i>⚡</i>
-        <h3>Szybkie Terminy</h3>
-        <p>Realizacja typowych zleceń nawet w 48 godzin.</p>
+        <p>Dostawa z HDS bezpośrednio na budowę.</p>
     </div>
 </section>
 
 <div class="container" id="oferta">
-    <h2>Nasza Oferta</h2>
+    <h2>Cennik Produktów</h2>
     <div style="text-align: center; display:none;" id="admin-tools">
-        <button onclick="addNewOffer()" style="margin-bottom:30px; padding:10px 20px; cursor:pointer;">+ Dodaj produkt</button>
+        <button onclick="addNewOffer()" style="margin-bottom:40px; padding:12px 25px; cursor:pointer; background:#2d3436; color:white; border-radius:5px; border:none; font-weight:bold;">+ Dodaj produkt</button>
     </div>
     <div class="offer-grid" id="offer-grid"></div>
 </div>
 
 <div class="container" id="kontakt">
-    <h2>Kontakt i Lokalizacja</h2>
+    <h2>Kontakt</h2>
     <div class="contact-wrapper">
         <div class="contact-info">
-            <h3 style="color:var(--accent)">Biuro Obsługi</h3>
-            <p><strong>Adres:</strong> <span id="display-address">ul. Tartaczna 15, 30-001 Tartakowo</span></p>
-            <p><strong>Telefon:</strong> <span id="display-phone">+48 123 456 789</span></p>
-            <p><strong>E-mail:</strong> <span id="display-email">biuro@dyltartak.pl</span></p>
+            <h3 style="color:var(--accent)">DylTartak</h3>
+            <p><strong>Lokalizacja:</strong> <br><span id="display-address">ul. Tartaczna 15, 30-001 Tartakowo</span></p>
+            <p><strong>Telefon:</strong> <br><span id="display-phone">+48 123 456 789</span></p>
+            <p><strong>E-mail:</strong> <br><span id="display-email">biuro@dyltartak.pl</span></p>
             
             <div class="admin-fields" id="admin-contact">
                 <input type="text" id="edit-address" placeholder="Adres">
@@ -152,24 +153,23 @@
             </div>
         </div>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.428453416!2d19.9448!3d50.0647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDAzJzUyLjkiTiAxOcKwNTYnNDEuMyJF!5e0!3m2!1spl!2spl!4v1620000000000!5m2!1spl!2spl"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.4243572836263!2d19.9449799!3d50.0646501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b12033aa64b%3A0x64c3917d23d9d300!2zS3Jha8Ozdw!5e0!3m2!1spl!2spl!4v1700000000000"></iframe>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 DylTartak. Wszelkie prawa zastrzeżone.</p>
+    <p>© 2026 DylTartak. Wszystkie prawa zastrzeżone.</p>
 </footer>
 
 <div class="save-bar" id="save-bar">
-    Tryb Edycji Aktywny 
-    <button class="btn-save" onclick="saveData()">Zapisz Zmiany</button>
+    Panel Edycji Aktywny
+    <button class="btn-save" onclick="saveData()">ZAPISZ CENY</button>
 </div>
 
 <script>
     window.onload = function() { loadSavedData(); };
 
-    // Logowanie (kliknięcie w LOGO w nawigacji)
     document.getElementById('admin-trigger').addEventListener('click', function() {
         if(prompt("Login:") === 'admin' && prompt("Hasło:") === 'admin') {
             document.querySelectorAll('.admin-fields').forEach(f => f.style.display = 'block');
@@ -178,26 +178,18 @@
         }
     });
 
-    function addNewOffer(name = "Nowy Produkt", price = "0", unit = "m³", img = "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=500&auto=format&fit=crop") {
+    function addNewOffer(name = "Produkt", price = "0.00", unit = "m³") {
         const grid = document.getElementById('offer-grid');
         const newItem = document.createElement('div');
         newItem.className = 'offer-item';
         newItem.innerHTML = `
-            <img src="${img}" class="offer-img">
-            <div class="offer-content">
-                <div class="prod-name">${name}</div>
-                <div class="price-tag">${price} zł / ${unit}</div>
-                <div class="admin-fields" style="display:block;">
-                    <input type="text" class="edit-n" value="${name}">
-                    <input type="text" class="edit-p" value="${price}">
-                    <select class="edit-u">
-                        <option value="mb" ${unit==='mb'?'selected':''}>mb</option>
-                        <option value="m²" ${unit==='m²'?'selected':''}>m²</option>
-                        <option value="m³" ${unit==='m³'?'selected':''}>m³</option>
-                    </select>
-                    <input type="text" class="edit-i" value="${img}" placeholder="Link do zdjęcia">
-                    <button onclick="this.parentElement.parentElement.parentElement.remove()" style="color:red; margin-top:10px; cursor:pointer;">Usuń produkt</button>
-                </div>
+            <div class="prod-name">${name}</div>
+            <div class="price-tag">${price} zł / ${unit}</div>
+            <div class="admin-fields" style="display:block; border:none; background:none; padding:0;">
+                <input type="text" class="edit-n" value="${name}">
+                <input type="text" class="edit-p" value="${price}">
+                <input type="text" class="edit-u" value="${unit}">
+                <button onclick="this.parentElement.parentElement.remove()" style="color:#e74c3c; background:none; border:none; cursor:pointer; font-weight:bold; margin-top:10px;">Usuń</button>
             </div>
         `;
         grid.appendChild(newItem);
@@ -209,8 +201,7 @@
             offers.push({
                 name: item.querySelector('.edit-n').value,
                 price: item.querySelector('.edit-p').value,
-                unit: item.querySelector('.edit-u').value,
-                img: item.querySelector('.edit-i').value
+                unit: item.querySelector('.edit-u').value
             });
         });
 
@@ -220,15 +211,15 @@
             email: document.getElementById('edit-email').value
         };
 
-        localStorage.setItem('dylTartak_v3', JSON.stringify({offers, contact}));
-        alert("Zapisano! Strona zostanie odświeżona.");
+        localStorage.setItem('dylTartak_NoImages', JSON.stringify({offers, contact}));
+        alert("Zapisano! Odśwież stronę.");
         location.reload();
     }
 
     function loadSavedData() {
-        const data = JSON.parse(localStorage.getItem('dylTartak_v3'));
+        const data = JSON.parse(localStorage.getItem('dylTartak_NoImages'));
         if (data && data.offers.length > 0) {
-            data.offers.forEach(o => addNewOffer(o.name, o.price, o.unit, o.img));
+            data.offers.forEach(o => addNewOffer(o.name, o.price, o.unit));
             document.getElementById('display-address').innerText = data.contact.address;
             document.getElementById('edit-address').value = data.contact.address;
             document.getElementById('display-phone').innerText = data.contact.phone;
@@ -237,7 +228,8 @@
             document.getElementById('edit-email').value = data.contact.email;
         } else {
             addNewOffer("Więźba dachowa", "1650", "m³");
-            addNewOffer("Deska tarasowa", "110", "m²");
+            addNewOffer("Łaty impregnowane", "4.80", "mb");
+            addNewOffer("Deska tarasowa", "120", "m²");
         }
         document.querySelectorAll('.admin-fields').forEach(f => f.style.display = 'none');
     }
@@ -245,4 +237,3 @@
 
 </body>
 </html>
-
